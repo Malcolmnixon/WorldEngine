@@ -21,3 +21,6 @@ jobs:
             
     - name: MSBuild
       run: msbuild WorldEngine.sln
+      
+    - name: VSTest
+      run: vstest.console WorldEngineTest\bin\Debug\WorldEngineTest.dll
