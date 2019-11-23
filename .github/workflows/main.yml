@@ -10,11 +10,17 @@ jobs:
     steps:
     - uses: actions/checkout@master
       
+    - name: Setup VSWhere.exe
+      uses: warrenbuckley/Setup-VSWhere@v1
+            
     - name: Setup Nuget.exe
       uses: warrenbuckley/Setup-Nuget@v1
             
     - name: Setup MSBuild.exe
       uses: warrenbuckley/Setup-MSBuild@v1
+      
+    - name: Setup VSTest.Console.exe
+      uses: malcolmnixon/Setup-VSTest@master
       
     - name: Nuget Restore 
       run: nuget restore WorldEngine.sln
