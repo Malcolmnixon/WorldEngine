@@ -1,0 +1,32 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@master
+      
+    - name: Setup VSWhere.exe
+      uses: warrenbuckley/Setup-VSWhere@v1
+            
+    - name: Setup Nuget.exe
+      uses: warrenbuckley/Setup-Nuget@v1
+            
+    - name: Setup MSBuild.exe
+      uses: warrenbuckley/Setup-MSBuild@v1
+      
+    - name: Setup VSTest.Console.exe
+      uses: malcolmnixon/Setup-VSTest@v1
+      
+    - name: Nuget Restore 
+      run: nuget restore WorldEngine.sln
+            
+    - name: MSBuild
+      run: msbuild WorldEngine.sln
+      
+    - name: VSTest
+      run: vstest.console WorldEngineTest\bin\Debug\WorldEngineTest.dll
