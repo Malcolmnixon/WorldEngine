@@ -17,9 +17,6 @@ jobs:
 
     - name: Build with dotnet
       run: dotnet build --configuration Release
-      
-    - name: Setup VSTest.Console.exe
-      uses: malcolmnixon/Setup-VSTest@v1
-      
-    - name: VSTest
-      run: vstest.console WorldEngineTest\bin\Debug\WorldEngineTest.dll
+
+    - name: Test with dotnet
+      run: dotnet test --configuration Release
